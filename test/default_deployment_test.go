@@ -40,10 +40,10 @@ func TestModuleDeployment(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Get deployment outputs
-	actualDataLakeAccountNamePrefix := terraform.Output(t, terraformOptions, "data_lake_account_name")
+	actualDataLakeAccountName := terraform.Output(t, terraformOptions, "data_lake_account_name")
 	actualDataLakeResourceGroupName := terraform.Output(t, terraformOptions, "data_lake_resource_group_name")
 
 	// Verify output values are as expected
-	assert.Contains(t, actualDataLakeAccountNamePrefix, expectedDataLakeAccountNamePrefix)
+	assert.Contains(t, actualDataLakeAccountName, expectedDataLakeAccountNamePrefix)
 	assert.Equal(t, expectedDataLakeResourceGroupName, actualDataLakeResourceGroupName)
 }
