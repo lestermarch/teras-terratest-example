@@ -1,0 +1,73 @@
+name: 'Terraform CI'
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Setup TFLint
+        run: |
+          echo "Installing TFLint..."
+          echo "::debug::curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash"
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+          echo "::debug::tflint --version"
+          tflint --version
+
+      - name: Terraform Init
+        run: |
+          echo "Initialising Terraform..."
+          echo "::debug::terraform init -backend=false -no-color"
+          terraform init -backend=false -no-color
+
+      - name: Terraform Format
+        run: |
+          echo "Checking Terraform file formatting..."
+          echo "::debug::terraform fmt -check"
+          terraform fmt -check
+
+      - name: Terraform Validate
+        run: |
+          echo "Validating Terraform files..."
+          echo "::debug::terraform validate -no-color"
+          terraform validate -no-color
+
+      - name: TFLint Validate
+        run: |
+          echo "Initialising TFLint..."
+          echo "::debug::tflint --init --config=.config/.tflint.hcl --no-color"
+          tflint --init --config=.config/.tflint.hcl --no-color
+
+          echo "Running TFLint..."
+          echo "::debug::tflint --format=compact --config=.config/.tflint.hcl --no-color"
+          tflint --format=compact --config=.config/.tflint.hcl --no-color
+
+          if [[ $? -ne 0 ]]; then
+            echo "::error::TFLint reported failures"
+          fi
+
+      - name: Terraform Docs
+        uses: terraform-docs/gh-actions@v1
+        with:
+          git-commit-message: "docs: terraform-docs automated action"
+          git-push: true
+          output-file: README.md
+          output-method: inject
+          template: <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->\n{{ .Content }}\n<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+          working-dir: .
+
+      - name: Checkov Validate
+        uses: bridgecrewio/checkov-action@master
+        with:
+          config_file: .config/.checkov.yaml

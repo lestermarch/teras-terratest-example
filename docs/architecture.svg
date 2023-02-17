@@ -1,0 +1,16 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179 174" width="179" height="174">
+  <!-- svg-source:excalidraw -->
+
+  <defs>
+    <style class="style-fonts">
+      @font-face {
+        font-family: "Virgil";
+        src: url("https://excalidraw.com/Virgil.woff2");
+      }
+      @font-face {
+        font-family: "Cascadia";
+        src: url("https://excalidraw.com/Cascadia.woff2");
+      }
+    </style>
+  </defs>
+  <g stroke-linecap="round" transform="translate(10 10) rotate(0 79.5 77)"><path d="M32 0 M32 0 C66.47 0.1, 102.32 -0.26, 127 0 M32 0 C53.12 -0.37, 75.14 -0.86, 127 0 M127 0 C147.08 0.54, 158.62 10.87, 159 32 M127 0 C149.56 1.41, 160 9.07, 159 32 M159 32 C158.36 57.28, 160.85 82.81, 159 122 M159 32 C159.51 58.28, 159.41 86.91, 159 122 M159 122 C159.6 144.27, 146.72 155.39, 127 154 M159 122 C156.9 145.41, 146.49 154.98, 127 154 M127 154 C97.36 155.38, 70.25 156.02, 32 154 M127 154 C89.47 154.55, 51.45 154.77, 32 154 M32 154 C9.01 153.42, 1.02 143.06, 0 122 M32 154 C11.36 155.44, 1.66 141.04, 0 122 M0 122 C-1.23 92.72, 0.45 64.62, 0 32 M0 122 C-0.36 87.78, -1.11 51.16, 0 32 M0 32 C0.58 9.85, 9.03 0.22, 32 0 M0 32 C2.12 11.74, 11.4 0.4, 32 0" stroke="#862e9c" stroke-width="2" fill="none"></path></g><g transform="translate(29.5 47) rotate(0 61.5 37.5)"><text x="61.5" y="18" font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#862e9c" text-anchor="middle" style="white-space: pre;" direction="ltr">Module</text><text x="61.5" y="43" font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#862e9c" text-anchor="middle" style="white-space: pre;" direction="ltr">Template</text><text x="61.5" y="68" font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#862e9c" text-anchor="middle" style="white-space: pre;" direction="ltr">Architecture</text></g></svg>

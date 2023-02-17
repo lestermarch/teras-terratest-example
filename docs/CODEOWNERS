@@ -1,0 +1,11 @@
+# The file patterns below determine which users/groups own specific repo files or folders.
+# Each code owner will be automatically asked to approve Pull Requess affecting their files or folders.
+
+# Default owners for everything in this module
+# *         @my.email@ascent.io @group-name
+
+# Owners for all Terraform files specifically (not documentation or configuration)
+# *.tf      @my.email@ascent.io @group-name
+
+# Owners for documentation (not module files or configuration)
+# docs/*    @my.email@ascent.io @group-name
