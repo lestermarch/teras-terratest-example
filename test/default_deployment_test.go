@@ -15,15 +15,15 @@ func TestModuleDeployment(t *testing.T) {
 	expectedDataLakeResourceGroupName := "rg-terratest"
 
 	// Set deployment options
-	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraformOptions{
+	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// Define example deployment path
 		TerraformDir: "../examples/default-deployment",
 
 		// Define variables to pass to Terraform using -var options
 		Vars: map[string]interface{}{
-			"location": "uksouth",
+			"location":            "uksouth",
 			"resource_group_name": expectedDataLakeResourceGroupName,
-			"resource_suffix": "test-uks",
+			"resource_suffix":     "test-uks",
 		},
 
 		// Define a tfvars file to pass to Terraform using the -var-file option
